@@ -66,7 +66,8 @@ public class Titik {
     
     //Calculates the distance between two titiks.
     public static double distance(Titik p, Titik centroid) {
-        return Math.sqrt(Math.pow((centroid.getX() - p.getX()), 2) + Math.pow((centroid.getY() - p.getY()), 2) + Math.pow((centroid.getZ() - p.getZ()), 2));
+        double hasil = Math.pow((centroid.getX() - p.getX()), 2) + Math.pow((centroid.getY() - p.getY()), 2) + Math.pow((centroid.getZ() - p.getZ()), 2);
+        return Math.sqrt(hasil);
     }
     
     //Creates random titik
