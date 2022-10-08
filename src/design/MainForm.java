@@ -49,8 +49,8 @@ public class MainForm extends javax.swing.JFrame {
     	//Set Random Centroids 
     	for (int i = 0; i < jmlCluster; i++) {
     		Cluster cluster = new Cluster(i);
-    		Titik centroid = Titik.createRandomTitik(koordinatMin,koordinatMax);
-//    		Titik centroid = getRandomTitik();
+//    		Titik centroid = Titik.createRandomTitik(koordinatMin,koordinatMax);
+    		Titik centroid = getRandomTitik();
     		cluster.setCentroid(centroid); 
     		clusters.add(cluster);
     	}  
@@ -95,9 +95,8 @@ public class MainForm extends javax.swing.JFrame {
     public Titik getRandomTitik()
     {
         Random randomGenerator = new Random();
-        int index = randomGenerator.nextInt(titiks.size());
-        Titik titik = titiks.get(index); 
-        return titik;
+        int index = randomGenerator.nextInt(titiks.size()); 
+        return titiks.get(index);
     }
     
     private void plotClusters() {
@@ -241,7 +240,7 @@ public class MainForm extends javax.swing.JFrame {
             	double newZ = sumZ / n_titiks;
                 cluster.getCentroid().setX(newX);
                 cluster.getCentroid().setY(newY);
-                cluster.getCentroid().setY(newZ);
+                cluster.getCentroid().setZ(newZ);
             }  
         } 
     }

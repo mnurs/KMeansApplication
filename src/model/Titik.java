@@ -46,7 +46,7 @@ public class Titik {
      * @return the z
      */
     public double getZ() {
-        return z;
+        return this.z;
     }
 
     /**
