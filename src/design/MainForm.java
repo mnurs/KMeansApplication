@@ -115,7 +115,7 @@ public class MainForm extends javax.swing.JFrame {
         // Add in new data, one at a time, recalculating centroids with each new one. 
         while(!finish) {
         	//Clear cluster state
-        	clearClusters();
+        	clearClusters(); 
         	
         	List<Titik> lastCentroids = getCentroids();
         	
@@ -140,12 +140,12 @@ public class MainForm extends javax.swing.JFrame {
         	System.out.println("===================================="); 
         	plotClusters();
         	System.out.println("====================================");
-        	        	
+        	    	
         	if(distance == 0) {
                        setHasilCluster();
                        getCentroidHasil();
         		finish = true;
-        	}
+        	}   
         }
     }
     
@@ -189,8 +189,8 @@ public class MainForm extends javax.swing.JFrame {
     	}
     }
     
-    private List getCentroids() {
-    	List centroids = new ArrayList(jmlCluster);
+    private List<Titik> getCentroids() {
+    	List<Titik> centroids = new ArrayList(jmlCluster);
     	for(Cluster cluster : clusters) {
     		Titik aux = cluster.getCentroid();
     		Titik titik = new Titik(aux.getX(),aux.getY(),aux.getZ());
@@ -222,9 +222,10 @@ public class MainForm extends javax.swing.JFrame {
     
     private void calculateCentroids() {
         for(Cluster cluster : clusters) {
-            double sumX = 0;
-            double sumY = 0;
-            double sumZ = 0;
+            Cluster newCluster =  new Cluster(cluster.getId());
+            double sumX = 0.0;
+            double sumY = 0.0;
+            double sumZ = 0.0;
             List<Titik> list = cluster.getTitiks();
             int n_titiks = list.size();
             
@@ -233,17 +234,16 @@ public class MainForm extends javax.swing.JFrame {
                 sumY += titik.getY();
                 sumZ += titik.getZ();
             }
-            
-            Titik centroid = cluster.getCentroid();
+             
             if(n_titiks > 0) {
             	double newX = sumX / n_titiks;
             	double newY = sumY / n_titiks;
-            	double newZ = sumY / n_titiks;
-                centroid.setX(newX);
-                centroid.setY(newY);
-                centroid.setY(newZ);
-            }
-        }
+            	double newZ = sumZ / n_titiks;
+                cluster.getCentroid().setX(newX);
+                cluster.getCentroid().setY(newY);
+                cluster.getCentroid().setY(newZ);
+            }  
+        } 
     }
     
 

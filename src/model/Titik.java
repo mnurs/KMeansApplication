@@ -79,8 +79,8 @@ public class Titik {
     	return new Titik(x,y,z);
     }
     
-    public static List createRandomTitiks(int min, int max, int number) {
-    	List titiks = new ArrayList(number);
+    public static List<Titik> createRandomTitiks(int min, int max, int number) {
+    	List<Titik> titiks = new ArrayList(number);
     	for(int i = 0; i < number; i++) {
     		titiks.add(createRandomTitik(min,max));
     	}
