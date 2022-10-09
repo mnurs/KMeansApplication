@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Vector;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import model.Cluster;
 import model.Titik;
+import org.math.plot.Plot3DPanel;
 
 /**
  *
@@ -277,6 +279,7 @@ public class MainForm extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jtCentroidHasil = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -352,6 +355,13 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel9.setText("Centroid Hasil");
 
+        jButton1.setText("Diagram");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -389,9 +399,12 @@ public class MainForm extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtMinKoor)
                                     .addComponent(txtMaxKoor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnGenerate))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnGenerate)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)))
                         .addGap(144, 144, 144)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
@@ -421,7 +434,9 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(txtMaxKoor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(btnGenerate)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGenerate)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -432,7 +447,7 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -465,6 +480,43 @@ public class MainForm extends javax.swing.JFrame {
         calculate();
         
     }//GEN-LAST:event_btnGenerateActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ArrayList<double[]> x = new ArrayList<>();
+        ArrayList<double[]> y = new ArrayList<>();
+        ArrayList<double[]> z = new ArrayList<>(); 
+         
+        // create your PlotPanel (you can use it as a JPanel)
+//        Plot3DPanel plot = new Plot3DPanel(); 
+        Plot3DPanel plot = new Plot3DPanel();
+        for(Cluster cluster : clusters){  
+            double[] xD = new double[cluster.getTitiks().size()];
+            double[] yD = new double[cluster.getTitiks().size()];
+            double[] zD = new double[cluster.getTitiks().size()];
+            int num = 0;
+            for(Titik titik : cluster.getTitiks()){ 
+                xD[num] = titik.getX();
+                yD[num] = titik.getY();
+                zD[num] = titik.getZ(); 
+                num++;
+            }
+            x.add(xD);
+            y.add(yD);
+            z.add(zD);
+        } 
+        
+        for(Cluster cluster : clusters){  
+            System.out.println("X: " + x.get(cluster.getId()).length);
+            plot.addBarPlot("Clutter : "+cluster.getId(), x.get(cluster.getId()), y.get(cluster.getId()), z.get(cluster.getId()));
+        } 
+        // put the PlotPanel in a JFrame, as a JPanel
+        JFrame frame = new JFrame("a plot panel");
+        frame.setContentPane(plot);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        frame.setUndecorated(true);
+        frame.setVisible(true); 
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,6 +555,7 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
