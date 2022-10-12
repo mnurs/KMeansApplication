@@ -26,6 +26,12 @@ public class Titik {
         this.setZ(z);
     }
     
+    public Titik(double x, double y)
+    {
+        this.setX(x);
+        this.setY(y); 
+    }
+    
     public void setX(double x) {
         this.x = x;
     }
@@ -65,29 +71,43 @@ public class Titik {
     }
     
     //Calculates the distance between two titiks.
-    public static double distance(Titik p, Titik centroid) {
-        double hasil = Math.pow((centroid.getX() - p.getX()), 2) + Math.pow((centroid.getY() - p.getY()), 2) + Math.pow((centroid.getZ() - p.getZ()), 2);
+    public static double distance(Titik p, Titik centroid,int type) {
+        double hasil = 0.0;
+        if(type == 2){
+            hasil = Math.pow((centroid.getX() - p.getX()), 2) + Math.pow((centroid.getY() - p.getY()), 2);
+        }else{
+            hasil = Math.pow((centroid.getX() - p.getX()), 2) + Math.pow((centroid.getY() - p.getY()), 2) + Math.pow((centroid.getZ() - p.getZ()), 2);
+        }
+        
         return Math.sqrt(hasil);
     }
     
     //Creates random titik
-    public static Titik createRandomTitik(int min, int max) {
+    public static Titik createRandomTitik(int min, int max,int type) {
     	Random r = new Random();
     	double x = min + (max - min) * r.nextDouble();
     	double y = min + (max - min) * r.nextDouble();
     	double z = min + (max - min) * r.nextDouble();
-    	return new Titik(x,y,z);
+        if(type == 2){ 
+            return new Titik(x,y);
+        }else{ 
+            return new Titik(x,y,z);
+        }
     }
     
-    public static List<Titik> createRandomTitiks(int min, int max, int number) {
+    public static List<Titik> createRandomTitiks(int min, int max, int number,int type) {
     	List<Titik> titiks = new ArrayList(number);
     	for(int i = 0; i < number; i++) {
-    		titiks.add(createRandomTitik(min,max));
+    		titiks.add(createRandomTitik(min,max,type));
     	}
     	return titiks;
     }
     
-    public String toString() {
-    	return "("+x+","+y+","+z+")";
-    }
+    public String toString(int type) {
+        if(type == 2){ 
+            return "("+x+","+y+")";
+        }else{ 
+            return "("+x+","+y+","+z+")";
+        }
+    } 
 }
