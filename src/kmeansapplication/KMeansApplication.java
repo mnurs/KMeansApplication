@@ -5,6 +5,8 @@
  */
 package kmeansapplication;
 
+import design.MainForm;
+
 /**
  *
  * @author Saiful
@@ -16,6 +18,7 @@ public class KMeansApplication {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+         new MainForm().setVisible(true);
     }
     
 }
