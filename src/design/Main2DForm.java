@@ -282,8 +282,13 @@ public class Main2DForm extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(795, 600));
+        setSize(new java.awt.Dimension(0, 0));
+        getContentPane().setLayout(null);
 
         jtCentroid.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -295,27 +300,48 @@ public class Main2DForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtCentroid);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(510, 210, 242, 141);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Jumlah Cluster");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(80, 80, 84, 14);
 
         txtJmlCluster.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtJmlClusterActionPerformed(evt);
             }
         });
+        getContentPane().add(txtJmlCluster);
+        txtJmlCluster.setBounds(180, 80, 117, 20);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Aplikasi Clustering Dengan K-Means");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 32, 751, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Jumlah Data");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(80, 110, 71, 14);
+        getContentPane().add(txtJmlData);
+        txtJmlData.setBounds(180, 110, 117, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Min Koordinat");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(400, 80, 78, 14);
+        getContentPane().add(txtMinKoor);
+        txtMinKoor.setBounds(500, 80, 114, 20);
+        getContentPane().add(txtMaxKoor);
+        txtMaxKoor.setBounds(500, 110, 114, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Max Koordinat");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(400, 110, 82, 14);
 
         btnGenerate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnGenerate.setText("Generate");
@@ -324,9 +350,13 @@ public class Main2DForm extends javax.swing.JFrame {
                 btnGenerateActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGenerate);
+        btnGenerate.setBounds(80, 150, 100, 23);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Hasil Cluster");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(20, 360, 70, 14);
 
         jtHasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -338,8 +368,13 @@ public class Main2DForm extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jtHasil);
 
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(20, 380, 477, 143);
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Data Awal ");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(20, 190, 60, 14);
 
         jtAwal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -351,8 +386,13 @@ public class Main2DForm extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jtAwal);
 
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(20, 210, 477, 143);
+
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Centroid Awal");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(510, 190, 78, 14);
 
         jtCentroidHasil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -364,8 +404,13 @@ public class Main2DForm extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jtCentroidHasil);
 
+        getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(510, 380, 242, 141);
+
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Centroid Hasil");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(510, 360, 78, 14);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Diagram");
@@ -374,6 +419,8 @@ public class Main2DForm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(200, 150, 100, 23);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setText("Kembali");
@@ -382,107 +429,12 @@ public class Main2DForm extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(320, 150, 100, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jScrollPane3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel3))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtJmlCluster)
-                                            .addComponent(txtJmlData, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(98, 98, 98)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtMinKoor)
-                                            .addComponent(txtMaxKoor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnGenerate)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton2)))
-                                .addGap(144, 144, 144)))
-                        .addGap(0, 14, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtJmlCluster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(txtJmlData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtMinKoor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtMaxKoor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGenerate)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(8, 8, 8)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
-        );
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/360_F_428592351_83V8npDJjl7efE6ESmvH12zpYOMwJiqI.jpg"))); // NOI18N
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(0, 0, 780, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -607,6 +559,7 @@ public class Main2DForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
