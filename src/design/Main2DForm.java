@@ -111,7 +111,7 @@ public class Main2DForm extends javax.swing.JFrame {
     private void plotClusters() {
     	for (int i = 0; i < jmlCluster; i++) {
     		Cluster c = clusters.get(i);
-    		c.plotCluster();
+    		c.plotCluster(typeCluster);
     	}
     }
     
@@ -122,20 +122,20 @@ public class Main2DForm extends javax.swing.JFrame {
         
         // Add in new data, one at a time, recalculating centroids with each new one. 
         while(!finish) {
-        	//Clear cluster state
-        	clearClusters(); 
+        	//Clear cluster state 
+        	clearClusters();  
         	
-        	List<Titik> lastCentroids = getCentroids();
+        	List<Titik> lastCentroids = getCentroids(); 
         	
         	//Assign titiks to the closer cluster
-        	assignCluster();
+        	assignCluster(); 
             
                 //Calculate new centroids.
-        	calculateCentroids();
+        	calculateCentroids(); 
         	
         	iteration++;
         	
-        	List<Titik> currentCentroids = getCentroids();
+        	List<Titik> currentCentroids = getCentroids(); 
         	
         	//Calculates total distance between new and old Centroids
         	double distance = 0;
@@ -239,11 +239,12 @@ public class Main2DForm extends javax.swing.JFrame {
                 sumY += titik.getY(); 
             }
              
+            Titik new_titik;
             if(n_titiks > 0) {
             	double newX = sumX / n_titiks;
-            	double newY = sumY / n_titiks; 
-                cluster.getCentroid().setX(newX);
-                cluster.getCentroid().setY(newY); 
+            	double newY = sumY / n_titiks;  
+                new_titik = new Titik(newX, newY);
+                cluster.setCentroid(new_titik); 
             }  
         } 
     }

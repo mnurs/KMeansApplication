@@ -112,7 +112,7 @@ public class Main3DForm extends javax.swing.JFrame {
     private void plotClusters() {
     	for (int i = 0; i < jmlCluster; i++) {
     		Cluster c = clusters.get(i);
-    		c.plotCluster();
+    		c.plotCluster(typeCluster);
     	}
     }
     
@@ -244,13 +244,13 @@ public class Main3DForm extends javax.swing.JFrame {
                 sumZ += titik.getZ();
             }
              
+            Titik new_titik;
             if(n_titiks > 0) {
             	double newX = sumX / n_titiks;
             	double newY = sumY / n_titiks;
-            	double newZ = sumZ / n_titiks;
-                cluster.getCentroid().setX(newX);
-                cluster.getCentroid().setY(newY);
-                cluster.getCentroid().setZ(newZ);
+            	double newZ = sumZ / n_titiks; 
+                new_titik = new Titik(newX, newY, newZ);
+                cluster.setCentroid(new_titik); 
             }  
         } 
     }
