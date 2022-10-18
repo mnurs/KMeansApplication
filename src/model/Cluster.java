@@ -52,12 +52,12 @@ public class Cluster {
             titiks.clear();
     }
 
-    public void plotCluster() {
+    public void plotCluster(int type) {
             System.out.println("[Cluster: " + id+"]");
-            System.out.println("[Centroid: " + centroid + "]");
+            System.out.println("[Centroid: " + centroid.toString(type) + "]");
             System.out.println("[Titiks: \n");
             for(Titik p : titiks) {
-                    System.out.println(p);
+                    System.out.println(p.toString(type));
             }
             System.out.println("]");
     }

@@ -5,9 +5,17 @@
  */
 package model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +38,7 @@ public class Titik {
     {
         this.setX(x);
         this.setY(y); 
-    }
+    } 
     
     public void setX(double x) {
         this.x = x;
@@ -101,8 +109,39 @@ public class Titik {
     		titiks.add(createRandomTitik(min,max,type));
     	}
     	return titiks;
-    }
+    } 
     
+    public static List<Titik> readFile(String path,int type){
+        String line = "";
+        String splitBy = ";";
+    	List<Titik> titiks = new ArrayList(); 
+        try {
+          //parsing a CSV file into BufferedReader class constructor  
+          BufferedReader br = new BufferedReader(new FileReader(path));
+          while ((line = br.readLine()) != null)
+          //returns a Boolean value  
+          {
+            String[] data = line.split(splitBy);
+            Titik titik;
+            if(type == 2){ 
+                titik = new Titik(Double.parseDouble(data[0]),Double.parseDouble(data[1]));
+                titiks.add(titik); 
+            }else{ 
+                titik = new Titik(Double.parseDouble(data[0]),Double.parseDouble( data[1]),Double.parseDouble( data[2]));
+                titiks.add(titik);  
+            } 
+            //use comma as separator  
+//            System.out.println(data[2]);
+          }
+        }
+        catch(IOException e) {
+          e.printStackTrace();
+        }
+        return titiks;
+    }
+    public String toString() { 
+        return "("+x+","+y+","+z+")"; 
+    } 
     public String toString(int type) {
         if(type == 2){ 
             return "("+x+","+y+")";
